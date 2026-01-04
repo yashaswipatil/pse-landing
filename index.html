@@ -2,98 +2,389 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premier Schools Exhibition</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <header class="site-header">
         <div class="container header__container">
-    
-            <img src="assets/images/logo 1.png" alt="Premier Schools Exhibition logo" class="header__logo" />
-    
-            <a href="#" class="header__cta">Register Now</a>
-    
+            <div class="logo-wrapper">
+                <img src="assets/images/logo 1.png" alt="Premier Schools Exhibition" class="header__logo">
+            </div>
+
+            <a href="#" class="btn-split">
+                <span class="btn-icon">↗</span>
+                <span class="btn-text">REGISTER NOW</span>
+            </a>
         </div>
     </header>
 
+    <main>
+        <section class="hero">
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">
+                        Discover Gurugram’s <br>
+                        <span class="hero__highlight">Top 30+ Schools</span>
+                    </h1>
+                    <p class="hero__subtitle">ALL IN ONE PLACE</p>
 
-<section class="hero">
-    <div class="container hero__container">
-
-        <!-- LEFT CONTENT -->
-        <div class="hero__content">
-            <img src="assets/images/logo.png" alt="Premier Schools Exhibition logo" class="hero__logo" />
-
-            <h1 class="hero__title">
-                Discover Gurugram’s
-                <span class="hero__title-highlight">Top 30+ Schools</span>
-            </h1>
-
-            <p class="hero__subtitle">All in one place</p>
-
-            <!-- Event cards repeated like in target design -->
-            <div class="hero__event-cards">
-                <div class="hero__event-card">
-                    <p>Apparel House, Sec 44, Gurugram</p>
-                    <p>2–3 August 2025</p>
-                    <p>Sat–Sun | 10AM – 6PM</p>
+                    <div class="hero__info-box">
+                        <div class="info-row">
+                            <div class="info-col"><strong>Apparel House,</strong><br>Sec 44, Gurugram</div>
+                            <div class="info-col"><strong>2–3 August 2025</strong><br>Sat–Sun | 10AM – 6PM</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-col"><strong>Apparel House,</strong><br>Sec 44, Gurugram</div>
+                            <div class="info-col"><strong>2–3 August 2025</strong><br>Sat–Sun | 10AM – 6PM</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero__event-card">
-                    <p>Apparel House, Sec 44, Gurugram</p>
-                    <p>2–3 August 2025</p>
-                    <p>Sat–Sun | 10AM – 6PM</p>
+
+                <div class="hero__animation-area">
+                    <div class="scroll-track">
+                        <div class="animation-row">
+                            <img src="assets/images/16.png" class="pill-img">
+                            <img src="assets/images/19.png" class="pill-img">
+                            <img src="assets/images/23.png" class="pill-img">
+                        </div>
+                        <div class="animation-row">
+                            <img src="assets/images/15.png" class="pill-img">
+                            <img src="assets/images/20.png" class="pill-img">
+                            <img src="assets/images/24.png" class="pill-img">
+                        </div>
+                        <div class="animation-row">
+                            <img src="assets/images/17.png" class="pill-img">
+                            <img src="assets/images/21.png" class="pill-img">
+                            <img src="assets/images/25.png" class="pill-img">
+                        </div>
+                        <div class="animation-row">
+                            <img src="assets/images/16.png" class="pill-img">
+                            <img src="assets/images/19.png" class="pill-img">
+                            <img src="assets/images/23.png" class="pill-img">
+                        </div>
+                        <div class="animation-row">
+                            <img src="assets/images/15.png" class="pill-img">
+                            <img src="assets/images/20.png" class="pill-img">
+                            <img src="assets/images/24.png" class="pill-img">
+                        </div>
+                        <div class="animation-row">
+                            <img src="assets/images/17.png" class="pill-img">
+                            <img src="assets/images/21.png" class="pill-img">
+                            <img src="assets/images/25.png" class="pill-img">
+                        </div>
+                    </div>
                 </div>
-                <div class="hero__event-card">
-                    <p>Apparel House, Sec 44, Gurugram</p>
-                    <p>2–3 August 2025</p>
-                    <p>Sat–Sun | 10AM – 6PM</p>
+
+                <aside class="hero__form-card">
+                    <h2 class="form-title">Enquire Now</h2>
+                    <form>
+                        <input type="text" placeholder="Parent's Name" required>
+                        <input type="tel" placeholder="Phone number" required>
+                        <input type="text" placeholder="Which grade are you looking for?" required>
+                        <button type="submit" class="btn-split btn-submit">
+                            <span class="btn-icon">↗</span>
+                            <span class="btn-text">SUBMIT</span>
+                        </button>
+                    </form>
+                </aside>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container stats__container">
+                <div class="stat-item">
+                    <img src="assets/images/01.png" alt="Trusted by 1 Million+ Parents" class="stat-img">
                 </div>
-                <div class="hero__event-card">
-                    <p>Apparel House, Sec 44, Gurugram</p>
-                    <p>2–3 August 2025</p>
-                    <p>Sat–Sun | 10AM – 6PM</p>
+                <div class="stat-item">
+                    <img src="assets/images/02.png" alt="22+ Years of Legacy" class="stat-img">
+                </div>
+                <div class="stat-item">
+                    <img src="assets/images/03.png" alt="500+ Participating Schools" class="stat-img">
+                </div>
+                <div class="stat-item">
+                    <img src="assets/images/04.png" alt="17 Cities Across the Globe" class="stat-img">
                 </div>
             </div>
-        </div>
-
-        <!-- CENTER IMAGE COLLAGE -->
-        <div class="hero__slider">
-            <div class="hero__collage">
-                <img src="assets/images/16.png" class="collage-img img-1" />
-                <img src="assets/images/19.png" class="collage-img img-2" />
-                <img src="assets/images/23.png" class="collage-img img-3" />
-                <img src="assets/images/15.png" class="collage-img img-4" />
-                <img src="assets/images/20.png" class="collage-img img-5" />
-                <img src="assets/images/24.png" class="collage-img img-6" />
-                <img src="assets/images/17.png" class="collage-img img-7" />
-                <img src="assets/images/21.png" class="collage-img img-8" />
-                <img src="assets/images/25.png" class="collage-img img-9" />
-                <img src="assets/images/18.png" class="collage-img img-10" />
-                <img src="assets/images/22.png" class="collage-img img-11" />
-                <img src="assets/images/26.png" class="collage-img img-12" />
+        </section>
+        <section class="schools">
+            <div class="container">
+                <h2 class="section-title">Participating Schools</h2>
+                <div class="schools-grid">
+                    <div class="school-logo-card"><img src="assets/images/Group1.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group2.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group3.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group4.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group5.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group6.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group1.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group2.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group3.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group4.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group5.png" alt="School Name"></div>
+                    <div class="school-logo-card"><img src="assets/images/Group6.png" alt="School Name"></div>
+                </div>
             </div>
+        </section>
+
+    <section class="video-full">
+        <div class="video-wrapper">
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="assets/images/fullImg.png"  alt="Premier Schools Exhibition Event Video - Play Now">
+            </a>
         </div>
+    </section>
 
-        <!-- RIGHT FORM -->
-        <aside class="hero__form-wrapper">
-            <form class="hero__form">
-                <h2 class="hero__form-title">Enquire Now</h2>
+        <section class="choice" aria-label="School Categories">
+            <div class="container">
+                <h2 class="section-title2">Choose the School That Fits You Best</h2>
+                <div class="choice-grid">
+                    <article class="choice-card">
+                        <img src="assets/images/first.png"
+                            alt="Pre-Schools & Early Learning Centres - Nurturing foundational skills">
+                    </article>
+                    <article class="choice-card">
+                        <img src="assets/images/second.png"
+                            alt="K-12 CBSE Day Schools - Reputed schools from Kindergarten to Grade 12">
+                    </article>
+                    <article class="choice-card">
+                        <img src="assets/images/third.png"
+                            alt="Heritage to New-Age Schools - Innovative pedagogy and tech-enabled">
+                    </article>
+                    <article class="choice-card">
+                        <img src="assets/images/four.png"
+                            alt="International Curriculum Schools - IB, Cambridge, and Global curricula">
+                    </article>
+                </div>
+            </div>
+        </section>
 
-                <input type="text" placeholder="Parent’s Name" required />
-                <input type="tel" placeholder="Phone number" required />
-                <input type="text" placeholder="Which grade are you looking for?" required />
+        <section class="appointment-section">
+            <div class="appointment-container">
+                <div class="appointment-content">
+                    <span class="eyebrow">Exciting Opportunities for Parents!</span>
+                    <h2 class="appointment-title">Pre-schedule Your <br>School Appointments</h2>
+                    <p class="appointment-sub">To Avoid Rush</p>
+        
+                    <a href="#" class="btn-split">
+                        <span class="btn-icon">↗</span>
+                        <span class="btn-text">PRE-SCHEDULE NOW</span>
+                    </a>
+                </div>
+                <div class="appointment-image">
+                    <img src="assets/images/oppointment.jpg" alt="Parents meeting schools">
+                </div>
+            </div>
+        </section>
+        
+        <section class="attractions">
+            <div class="container">
+                <div class="attractions-layout">
+                    <div class="attractions-visual">
+                        <div class="diamond-collage-container">
+                            <div class="diamond-item d-top">
+                                <img src="assets/images/attractions1.jpg" alt="Kid Performance">
+                            </div>
+                            <div class="diamond-item d-left">
+                                <img src="assets/images/attractions2.jpg" alt="Kid Speaking">
+                            </div>
+                            <div class="diamond-item d-right">
+                                <img src="assets/images/aatractions3.jpg" alt="Kid Expressing">
+                            </div>
+                            <div class="diamond-item d-bottom">
+                                <img src="assets/images/attractions4.jpg" alt="Kids Group">
+                            </div>
+                            <div class="center-star-logo">
+                                <img src="assets/images/attractionsside.png" alt="Premier Kidz Awards Star">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="attractions-content">
+                        <h2 class="section-title-left">Other Attractions for <br>Parents & Kids</h2>
+        
+                        <div class="tab-group">
+                            <button class="tab-btn active">PREMIER KIDZ AWARDS</button>
+                            <button class="tab-btn">THE PARENT EXCHANGE</button>
+                        </div>
+        
+                        <div class="tab-panel">
+                            <h3>Premier Kidz Awards</h3>
+                            <p>A prestigious platform celebrating young talent and building confidence by giving children the
+                                spotlight to shine.</p>
+        
+                            <a href="#" class="btn-split">
+                                <span class="btn-icon">↗</span>
+                                <span class="btn-text">TO KNOW MORE</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
 
-                <button type="submit" class="hero__submit">Submit</button>
-            </form>
-        </aside>
+        <section class="exhibition" aria-labelledby="exhibition-title">
+            <div class="container2">
+                <h2 id="exhibition-title" class="exhibition__title">What Makes This Exhibition a Must-Visit</h2>
+        
+                <div class="exhibition__slider-wrapper">
+                    <div class="exhibition__slider" id="exhibitionSlider" role="region" aria-roledescription="carousel">
+                        <div class="exhibition__track" id="sliderTrack">
+        
+                            <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="1 of 5">
+                                <div class="exhibition-card__icon" aria-hidden="true"><img src="assets/images/frame1.png" alt="" role="presentation" class="exhibition-card__icon-img"
+                                    loading="lazy" /></div>
+                                <h3 class="exhibition-card__title">Interact Directly with School Heads</h3>
+                                <p class="exhibition-card__desc">Get answers straight from the experts</p>
+                            </article>
+        
+                            <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="2 of 5">
+                                <div class="exhibition-card__icon" aria-hidden="true"><img src="assets/images/frame2.png" alt="" role="presentation" class="exhibition-card__icon-img" loading="lazy" /></div>
+                                <h3 class="exhibition-card__title">Compare Curriculum & Pedagogy</h3>
+                                <p class="exhibition-card__desc">Understand the differences between CBSE, ICSE, IB, Cambridge,
+                                    Finnish & more</p>
+                            </article>
+        
+                            <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="3 of 5">
+                                <div class="exhibition-card__icon" aria-hidden="true"><img src="assets/images/frame3.png" alt="" role="presentation" class="exhibition-card__icon-img" loading="lazy" /></div>
+                                <h3 class="exhibition-card__title">Get Exclusive Fee Structures & Offers</h3>
+                                <p class="exhibition-card__desc">Access transparent information and avail offers</p>
+                            </article>
+        
+                            <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="4 of 5">
+                                <div class="exhibition-card__icon" aria-hidden="true"><img src="assets/images/frame4.png" alt="" role="presentation" class="exhibition-card__icon-img" loading="lazy" /></div>
+                                <h3 class="exhibition-card__title">Explore Schools Offerings</h3>
+                                <p class="exhibition-card__desc">Preview infrastructure, co-curricular, teaching methodology and
+                                    culture</p>
+                            </article>
+        
+                            <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="5 of 5">
+                                <div class="exhibition-card__icon" aria-hidden="true">🤝</div>
+                                <h3 class="exhibition-card__title">On-the-spot Counseling</h3>
+                                <p class="exhibition-card__desc">Save time with application guidance and career counseling.</p>
+                            </article>
+        
+                        </div>
+                    </div>
+        
+                    <div class="exhibition__controls">
+                        <button class="exhibition__btn" id="prevBtn">←</button>
+                        <button class="exhibition__btn" id="nextBtn">→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="exhibition__curve-container">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="#ffffff" d="M0,160 C480,320 960,320 1440,160 L1440,320 L0,320 Z"></path>
+                </svg>
+            </div>
+           
+        </section>
 
-    </div>
-</section>
+        <section class="reviews">
+            <div class="container2">
+                <h2 class="section-title">What Makes Parents Choose Us</h2>
+                <div class="reviews__grid">
+                    <div class="review-card">
+                        <img src="assets/images/review1.png" alt="Parent Review" class="review-card__img">
+                        <div class="review-card__overlay">
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <img src="assets/images/review2.png" alt="Parent Review" class="review-card__img">
+                        <div class="review-card__overlay">
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <img src="assets/images/review3.png" alt="Parent Review" class="review-card__img">
+                        <div class="review-card__overlay">
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <img src="assets/images/review4.png" alt="Parent Review" class="review-card__img">
+                        <div class="review-card__overlay">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="gallery">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery__container">
+                <div class="gallery__track">
+                    <div class="gallery__item"><img src="assets/images/gallery1.jpg" alt="Gallery Image"></div>
+                    <div class="gallery__item"><img src="assets/images/gallery2.jpg" alt="Gallery Image"></div>
+                    <div class="gallery__item"><img src="assets/images/gallery1.jpg" alt="Gallery Image"></div>
+                </div>
+            </div>
+        </section>
 
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__col footer__col--logo">
+                    <img src="assets/images/logo 1.png" alt="Premier Schools Exhibition" class="footer__logo">
+                </div>
+        
+                <div class="footer__col">
+                    <div class="footer__info-item">
+                        <div class="footer__icon-box">
+                            <img src="assets/images/icon1.png" alt="" class="footer__icon-img">
+                        </div>
+                        <div class="footer__text">
+                            <strong>Corporate Office:</strong>
+                            <p>Suite B-5, Ballygunge Park Tower, 67B Ballygunge Circular Road, Kolkata - 700019</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="footer__col">
+                    <div class="footer__info-item">
+                        <div class="footer__icon-box">
+                            <img src="assets/images/icon1.png" alt="" class="footer__icon-img">
+                        </div>
+                        <div class="footer__text">
+                            <strong>Ahmedabad Office:</strong>
+                            <p>12/AA, Swastik Chambers, Near CU Shah College, Ashram Road, Ahmedabad - 380009</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="footer__col footer__col--contact">
+                    <div class="footer__contact-row">
+                        <div class="footer__info-item">
+                            <div class="footer__icon-box">
+                                <img src="assets/images/icon2.png" alt="" class="footer__icon-img">
+                            </div>
+                            <div class="footer__text">
+                                <strong>Call us on</strong>
+                                <p>9674805912<br>9674585012</p>
+                            </div>
+                        </div>
+                
+                        <div class="footer__socials-wrapper">
+                            <span class="footer__socials-label">Follow us on</span>
+                            <div class="footer__social-icons">
+                                <a href="#" class="social-btn"><img src="assets/images/icon3.png" alt="FB"></a>
+                                <a href="#" class="social-btn"><img src="assets/images/icon4.png" alt="IG"></a>
+                                <a href="#" class="social-btn"><img src="assets/images/icon5.png" alt="YT"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer__copyright">
+                <p>Copyright © 2025 | All rights reserved. Premier Schools Exhibition</p>
+            </div>
+        </footer>
+        
+    </main>
 
 </body>
 

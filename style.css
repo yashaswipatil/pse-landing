@@ -1,285 +1,1177 @@
-/* =========================
-   RESET & BASE
-========================= */
+/* RESET & SCROLLBAR HIDER */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html,
 body {
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-    background: #f6f8fc;
-    color: #1f2937;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /* No horizontal scroll */
+    background: #0d0628;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    /* Hide scrollbars for IE/Edge and Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-ul,
-li {
-    list-style: none;
+/* Hide scrollbars for Chrome/Safari/Opera */
+body::-webkit-scrollbar {
+    display: none;
 }
 
-/* =========================
-   UTILITIES
-========================= */
 .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 20px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
-
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-}
-
-/* =========================
-   HERO LAYOUT
-========================= */
-.hero {
-    padding: 60px 0;
-}
-
-.hero__container {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 0.8fr;
-    gap: 40px;
-    align-items: center;
-}
-
 
 /* HEADER */
 .site-header {
-    background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
+    background: #fff;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
 }
 
 .header__container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-wrapper {
+    position: relative;
+    top: 35px;
 }
 
 .header__logo {
-    height: 44px;
+    height: 110px;
+    padding: 5px;
+    border-radius: 8px;
 }
 
-.header__cta {
-    background: #1e40af;
-    color: #ffffff;
-    padding: 10px 18px;
-    border-radius: 6px;
+/* BUTTONS */
+.btn-split {
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
+    border-radius: 6px;
+    overflow: hidden;
+    font-weight: 800;
     font-size: 14px;
-    font-weight: 600;
+    border: 2px solid #1a0b4d;
+    cursor: pointer;
+    background: #fff;
 }
 
-/* =========================
-   LEFT CONTENT
-========================= */
-.hero__logo {
-    width: 160px;
-    margin-bottom: 20px;
+.btn-icon {
+    background: #1a0b4d;
+    color: #fff;
+    padding: 12px 18px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-text {
+    background: #fff;
+    color: #1a0b4d;
+    padding: 0 25px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    overflow: hidden;
+    /* Final gatekeeper for scrollbars */
+    min-height: calc(100vh - 80px);
+}
+
+.hero__container {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr 0.9fr;
+    gap: 30px;
+    align-items: center;
 }
 
 .hero__title {
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: 38px;
+    line-height: 1.1;
     margin-bottom: 10px;
-}
-
-.hero__title-highlight {
-    color: #1e40af;
+    font-weight: 800;
+    color: #f2d19f;
 }
 
 .hero__subtitle {
+    letter-spacing: 2px;
     font-size: 18px;
-    margin-bottom: 20px;
-    color: #4b5563;
+    margin-bottom: 40px;
+    color: #f2d19f;
 }
 
-.hero__event p {
-    font-size: 15px;
-    margin-bottom: 6px;
+.hero__info-box {
+    background: #f2d19f;
+    color: #1a0b4d;
+    padding: 25px;
+    border-radius: 24px;
+    max-width: 450px;
 }
 
-/* =========================
-   FLOATING IMAGE AREA
-========================= */
-.hero__slider {
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.info-row:last-child {
+    border: none;
+}
+
+/* ANIMATION AREA - THE FIX */
+.hero__animation-area {
     position: relative;
-    width: 480px;
-    height: 560px;
+    height: 700px;
+    overflow: hidden;
+    /* Clips the duplicate set */
 }
 
-/* Animation */
-@keyframes floatLoop {
+.scroll-track {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Moves exactly half the height to loop back to image 1 seamlessly */
+    animation: scrollVertical 20s linear infinite;
+}
+
+.animation-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pill-img {
+    width: 170px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 130px;
+    /* Perfect Pill Shape */
+}
+
+@keyframes scrollVertical {
     0% {
-        transform: translateY(60px);
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    60% {
-        transform: translateY(-30px);
-        opacity: 1;
+        transform: translateY(0);
     }
 
     100% {
-        transform: translateY(-100px);
-        opacity: 0;
+        transform: translateY(-50%);
     }
 }
 
-/* Base floating image */
-.float-img {
-    position: absolute;
-    animation: floatLoop 8s ease-in-out infinite;
-    will-change: transform, opacity;
+/* FORM CARD */
+.hero__form-card {
+    background: rgba(30, 15, 80, 0.9);
+    padding: 40px 30px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* =========================
-   IMAGE POSITIONS (12)
-========================= */
-.img-1 {
-    top: 0;
-    left: 160px;
-    animation-delay: 0s;
+.form-title {
+    font-size: 26px;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
-.img-2 {
-    top: 60px;
-    left: 20px;
-    animation-delay: 0.6s;
-}
-
-.img-3 {
-    top: 60px;
-    left: 300px;
-    animation-delay: 1.2s;
-}
-
-.img-4 {
-    top: 160px;
-    left: 100px;
-    animation-delay: 1.8s;
-}
-
-.img-5 {
-    top: 160px;
-    left: 260px;
-    animation-delay: 2.4s;
-}
-
-.img-6 {
-    top: 200px;
-    left: 0;
-    animation-delay: 3s;
-}
-
-.img-7 {
-    top: 260px;
-    left: 180px;
-    animation-delay: 3.6s;
-}
-
-.img-8 {
-    top: 300px;
-    left: 60px;
-    animation-delay: 4.2s;
-}
-
-.img-9 {
-    top: 320px;
-    left: 300px;
-    animation-delay: 4.8s;
-}
-
-.img-10 {
-    top: 380px;
-    left: 140px;
-    animation-delay: 5.4s;
-}
-
-.img-11 {
-    top: 420px;
-    left: 20px;
-    animation-delay: 6s;
-}
-
-.img-12 {
-    top: 440px;
-    left: 280px;
-    animation-delay: 6.6s;
-}
-
-/* =========================
-   FORM
-========================= */
-.hero__form-wrapper {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-}
-
-.hero__form-title {
-    font-size: 22px;
-    margin-bottom: 20px;
-    color: #1e40af;
-}
-
-.hero__field {
-    margin-bottom: 15px;
-}
-
-.hero__field input {
+.hero__form-card input {
     width: 100%;
-    padding: 12px 14px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
-    border: 1px solid #d1d5db;
-    font-size: 14px;
+    color: #fff;
+    margin-bottom: 18px;
 }
 
-.hero__field input:focus {
-    outline: none;
-    border-color: #1e40af;
-}
-
-/* Button */
-.hero__submit {
+.btn-submit {
     width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    background: #1e40af;
-    color: #ffffff;
-    font-size: 16px;
-    cursor: pointer;
+    border: 1px solid #fff;
+    background: transparent;
 }
 
-.hero__submit:hover {
-    background: #1a369a;
+.btn-submit .btn-icon {
+    background: #fff;
+    color: #1a0b4d;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+.btn-submit .btn-text {
+    background: #1a0b4d;
+    color: #fff;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* MOBILE RESPONSIVE */
 @media (max-width: 1024px) {
     .hero__container {
         grid-template-columns: 1fr;
-        text-align: center;
     }
 
-    .hero__slider,
-    .hero__form-wrapper {
-        margin: auto;
+    .hero__animation-area {
+        height: 400px;
+    }
+}
+
+
+/* STATS SECTION */
+.stats {
+    background-color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.stats__container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stats {
+    background: #fff;
+    padding: 80px 0;
+    /* Increased padding for better breathing room */
+}
+
+.stats__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* Allows wrapping on smaller screens */
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 200px;
+    /* Prevents wreaths from getting too tiny */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-img {
+    max-width: 100%;
+    height: auto;
+    /* Adjust width based on your actual image export size */
+    width: 280px;
+    transition: transform 0.3s ease;
+}
+
+.stat-img:hover {
+    transform: scale(1.05);
+    /* Subtle interactive pop */
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .stats {
+        padding: 40px 0;
+    }
+
+    .stat-item {
+        flex: 0 0 45%;
+        /* Shows 2 items per row on tablets */
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-item {
+        flex: 0 0 100%;
+        /* Shows 1 item per row on phones */
+    }
+}
+
+/* CONTINUOUS LOGO SLING ANIMATION */
+.schools {
+    overflow: hidden;
+    /* Hides the logos moving off-screen */
+    background-color: #fff;
+    padding-bottom: 80px;
+}
+
+.schools-grid {
+    display: flex;
+    /* Changed from grid to flex for smooth sliding */
+    gap: 15px;
+    width: max-content;
+    animation: scroll-ltr 30s linear infinite;
+    /* Left-to-Right Flow */
+}
+
+/* Add this class to a second row in HTML for alternating Right-to-Left flow */
+.schools-grid-rtl {
+    display: flex;
+    gap: 15px;
+    width: max-content;
+    animation: scroll-rtl 30s linear infinite;
+    /* Right-to-Left Flow */
+}
+
+.school-logo-card {
+    flex: 0 0 200px;
+    /* Fixed width for consistent sliding */
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background: #fff;
+}
+
+/* Pause animation on hover for accessibility */
+.schools-grid:hover,
+.schools-grid-rtl:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-ltr {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scroll-rtl {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .schools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats__container {
+        flex-direction: column;
+    }
+}
+
+/* CHOOSE THE SCHOOL - IMAGE BASED */
+.choice {
+    background: #fff;
+    padding: 80px 0;
+}
+
+.choice-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.choice-card {
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.choice-card img {
+    width: 100%;
+    height: auto;
+    /* Maintains the aspect ratio of your exported images */
+    display: block;
+    object-fit: contain;
+}
+
+.choice-card:hover {
+    transform: translateY(-10px);
+    /* Lift effect since text is inside image */
+    box-shadow: 0 15px 30px rgba(13, 6, 40, 0.15);
+}
+
+/* RESPONSIVE: Converts to Mobile Slider */
+@media (max-width: 1024px) {
+    .choice-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 15px;
+        padding-bottom: 20px;
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .choice-grid::-webkit-scrollbar {
+        display: none;
+        /* Chrome/Safari */
+    }
+
+    .choice-card {
+        min-width: 80%;
+        /* Shows a peek of the next card to encourage swiping */
+        scroll-snap-align: center;
+    }
+}
+
+/* Accessibility: Support for Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .choice-card:hover {
+        transform: none;
+    }
+}
+
+
+/* Ensure the section takes the full width of the viewport */
+.video-full {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    line-height: 0;
+    /* Removes potential gap at the bottom */
+    overflow: hidden;
+}
+
+.video-wrapper {
+    width: 100%;
+}
+
+.video-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.schools,
+.choice {
+    padding-top: 80px;
+    background-color: #fff;
+
+}
+
+/* APPOINTMENT BANNER */
+.appointment-section {
+    background: linear-gradient(to right, #e8ddff 0%, #fdfbff 100%);
+    overflow: hidden;
+    width: 100%;
+    /* Ensure full width */
+}
+
+.appointment-container {
+    display: grid;
+    /* This creates a column for the text (limited) and a column for the image (fills rest) */
+    grid-template-columns: minmax(auto, 720px) 1fr; 
+    align-items: center;
+    width: 100%;
+}
+.appointment-content {
+    padding: 60px 0 60px 10%;
+}
+
+.eyebrow {
+    color: #7c4dff;
+    font-style: italic;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.appointment-title {
+    color: #1a0b4d;
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.appointment-sub {
+    color: #7c4dff;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.appointment-image {
+    width: 100%;
+    height: 100%;
+    line-height: 0;
+}
+
+.appointment-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Keep your mask if you want the fade effect on the left side of the image */
+    mask-image: linear-gradient(to left, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 85%, transparent 100%);
+}
+
+/* Responsive fix to stack on mobile */
+@media (max-width: 1024px) {
+    .appointment-container {
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-content {
+        padding: 40px 20px;
+    }
+}
+
+
+/* ATTRACTIONS SECTION */
+.attractions {
+    padding: 100px 0;
+    background-color: #f6f9ff;
+}
+
+.attractions-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+
+.diamond-frame img {
+    width: 100%;
+    display: block;
+}
+
+.section-title-left {
+    color: #1a0b4d;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.tab-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid #1a0b4d;
+    background: transparent;
+    color: #1a0b4d;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    background: #1a0b4d;
+    color: #fff;
+}
+
+.tab-panel h3 {
+    color: #1a0b4d;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.tab-panel p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 450px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+
+    .appointment-container,
+    .attractions-layout {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-content {
+        padding: 40px 20px;
+    }
+}
+
+.section-title {
+    text-align: center;
+    color: #1a0b4d;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+/* ATTRACTIONS GRID ADJUSTMENT */
+.attractions-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    /* Visual gets more space */
+    gap: 40px;
+    align-items: center;
+}
+
+/* CONTAINER FOR DIAMOND COLLAGE */
+.diamond-collage-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    /* Adjust based on desired size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #b392ff;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+/* INDIVIDUAL DIAMOND ITEMS */
+.diamond-item {
+    position: absolute;
+    width: 180px;
+    /* Size of diamonds */
+    height: 180px;
+    overflow: hidden;
+    /* This creates the diamond shape */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border: 3px solid #fff;
+    /* Optional white border */
+}
+
+.diamond-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* POSITIONING DIAMONDS */
+.d-top {
+    top: 20px;
+}
+
+.d-bottom {
+    bottom: 20px;
+}
+
+.d-left {
+    left: 40px;
+}
+
+.d-right {
+    right: 40px;
+}
+
+/* THE CENTER STAR LOGO */
+.center-star-logo {
+    z-index: 10;
+    width: 200px;
+    /* Adjust size to match image */
+}
+
+.center-star-logo img {
+    width: 100%;
+    height: auto;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .attractions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .diamond-collage-container {
+        height: 400px;
+    }
+
+    .diamond-item {
+        width: 130px;
+        height: 130px;
+    }
+
+    .center-star-logo {
+        width: 140px;
+    }
+}
+
+
+.section-title2
+ {
+    text-align: center;
+    color: #1a0b4d;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    font-family: 'Inter', sans-serif;
+}
+
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Exhibition Section */
+.exhibition {
+    background-color: #2D1B69;
+    /* Deep purple background from image */
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    /* Important to clip the large curve */
+    padding: 80px 0 180px;
+    /* Increased bottom padding for the curve space */
+    text-align: center;
+    z-index: 0;
+}
+
+.exhibition__curve-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 1;
+}
+
+.exhibition__curve-container svg {
+    width: 100%;
+    height: 180px;
+    /* Adjust height of the curve here */
+}
+
+.exhibition::after {
+    display: none;
+}
+.container2 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 5;
+    /* Keep content above the curve */
+}
+.exhibition__title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Slider Logic */
+.exhibition__slider-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+.exhibition__slider {
+    overflow: hidden;
+    cursor: grab;
+}
+
+.exhibition__slider:active {
+    cursor: grabbing;
+}
+
+.exhibition__track {
+    display: flex;
+    transition: transform var(--transition-speed) ease-in-out;
+    gap: 20px;
+}
+
+/* Cards */
+.exhibition-card {
+    flex: 0 0 calc(25% - 15px);
+    /* 4 cards on desktop */
+    background-color: #EDDDFF;
+    color: #000E38;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    transition: transform 0.3s ease;
+}
+
+.exhibition-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.exhibition-card__title {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-weight: 800;
+}
+
+.exhibition-card__desc {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Controls */
+.exhibition__controls {
+    display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 60px;
+        position: relative;
+        z-index: 20;
+}
+
+.exhibition__btn {
+    background: #ffffff;
+    border: 1px solid #2D1B69;
+    color: #2D1B69;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.exhibition__btn:hover {
+    transform: scale(1.1);
+    background: #f0f0f0;
+}
+
+.exhibition__btn:focus {
+    background: rgba(255, 255, 255, 0.2);
+    outline: 2px solid #fff;
+}
+
+/* Bottom Curve */
+.exhibition__curve {
+    display: none;
+}
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .exhibition-card {
+        flex: 0 0 calc(50% - 10px);
+    }
+
+    /* 2 cards */
+}
+
+@media (max-width: 640px) {
+    .exhibition-card {
+        flex: 0 0 100%;
+    }
+
+    /* 1 card mobile */
+    .exhibition__title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .exhibition__track {
+        transition: none;
+    }
+}
+
+
+/* Global Section Title (reuse) */
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #000E38;
+    margin: 60px 0 40px;
+    font-weight: 800;
+}
+
+/* --- Reviews Section --- */
+.reviews,
+.gallery {
+    background-color: #ffffff;
+    /* Forced white background */
+    padding: 10px 0;
+    font-family: sans-serif;
+}
+.reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding-bottom: 60px;
+}
+
+.review-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+}
+
+.review-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.review-card__overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+}
+
+.play-btn {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.play-icon {
+    background: white;
+    color: #2D1B69;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.play-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Gallery Section (The Curved Look) --- */
+.gallery {
+    padding-bottom: 80px;
+}
+
+.gallery__container {
+    padding: 0 5%;
+}
+
+.gallery__track {
+    display: flex;
+    gap: 15px;
+    /* This creates the upward-curving perspective seen in your image */
+    clip-path: ellipse(100% 100% at 50% 100%);
+}
+
+.gallery__item {
+    flex: 0 0 45%;
+    /* Shows roughly 2.5 images */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .reviews__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery__item {
+        flex: 0 0 70%;
+    }
+}
+
+@media (max-width: 600px) {
+    .reviews__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery__item {
+        flex: 0 0 90%;
+    }
+}
+
+
+.footer {
+    background: linear-gradient(90deg, #090333 0%, #2D1B69 50%, #090333 100%);
+    color: #ffffff;
+    padding: 60px 0 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer__container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Ensures all columns align at the top */
+    gap: 40px;
+}
+
+.footer__col {
+    flex: 1;
+}
+
+.footer__col--logo {
+    flex: 0 0 auto;
+}
+
+.footer__logo {
+    width: 130px;
+    height: auto;
+}
+
+.footer__info-item {
+    display: flex;
+    align-items: flex-start;
+    /* Aligns icon box with first line of text */
+    gap: 12px;
+}
+
+.footer__icon-box {
+    background-color: #D6C6F7;
+    /* Light lavender box */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.footer__icon-img {
+    height: auto;
+}
+
+.footer__text strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.footer__text p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Fix for the Contact/Social Column */
+.footer__col--contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1.5;
+}
+
+.footer__socials-label {
+display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    /* Matches the spacing of the <strong> tags */
+    line-height: 1.2;
+}
+
+.footer__social-icons {
+    display: flex;
+    gap: 8px;
+}
+
+.social-btn {
+    background-color: #D6C6F7;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+}
+
+.social-btn img {
+    width: 20px;
+}
+
+/* Copyright Bar */
+.footer__copyright {
+    background-color: #ffffff;
+    color: #090333;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.footer__copyright p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.footer__contact-row {
+    display: flex;
+    align-items: flex-start;
+    /* Aligns both sections to the top */
+    gap: 100px;
+    /* Space between Call Us and Follow Us */
+}
+
+@media (max-width: 600px) {
+    .footer__contact-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* Mobile Alignment Fix */
+@media (max-width: 992px) {
+    .footer__container {
+        flex-direction: column;
+        gap: 30px;
     }
 }
